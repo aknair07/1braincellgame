@@ -1,4 +1,8 @@
 import random
+import os
+
+def say(msg = "Game Over", voice = "Daniel"):
+    os.system(f'say -v {voice} {msg}')
 
 print('''
 ************************************************************
@@ -15,7 +19,7 @@ print('''
 ************************************************************
 ************************************************************''')
 
-print("Hello Agent, Welcome to your next mission")
+say("Hello Agent, Welcome to your next mission")
 difficulty = input("Please enter what difficulty would you like your mission to be.... Low (L) / Medium (M) / High (H) ").lower()
 print("Need to put some story here")
 
@@ -33,30 +37,30 @@ caughtMessages = ["Oh No, you opened the door and there were 10 guards there wai
 
 while(noOfRooms > 0):
     caught = random.choice(["left", "right", "forward"])
-    agentChoice = input("Where do you want to go? (left/right/forward)").lower()
+    agentChoice = input(say("Where do you want to go? (left/right/forward)")).lower()
     if agentChoice == caught:
-        print(random.choice(caughtMessages))
+        say(random.choice(caughtMessages))
         print('''
 ************************************************************
 ************************************************************ 
-  .-"""-.
- ( _   _ )
- ](_' `_)[
- `-. N ,-' 
-   |||||
-   `---'
+                       .-"""-.
+                      ( _   _ )
+                      ](_' `_)[
+                      `-. N ,-' 
+                        |||||
+                        `---'
 ************************************************************
 ************************************************************ 
           ''')
-        print("Good bye Bond!! GAME OVER")
+        say("Good bye Agent Bond!! GAME OVER")
         break
     else:
-        print("You have successfully gone to the next room")
+        say("Well done agent, you have managed to choose the correct door")
         noOfRooms -= 1
 if noOfRooms == 0:
     print('''
-************************************************************
-************************************************************ 
+****************************************
+**************************************** 
               .-=========-.
               \'-=======-'/
               _|   .=.   |_
@@ -66,7 +70,7 @@ if noOfRooms == 0:
                  _`) (`_
                _/_______\_
               (___________)
-************************************************************
-************************************************************ 
+****************************************
+****************************************
           ''')
-    print("Congratulations!!! YOU WIN!!")
+    say("Congratulations Agent, you have managed to ESCAPE!!! YOU WIN!!")
