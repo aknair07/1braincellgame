@@ -18,3 +18,7 @@ makeChoiceMessage = "Where do you want to go? (left/right/forward)"
 correctDoorMessage = "Well done agent, you have managed to choose the correct door"
 
 victoryMessage = "Congratulations Agent, you have managed to ESCAPE!!! YOU WIN!!"
+
+remakeChoice = "There is no door in the chosen path, choose again before it is too late!"
+
+caughtSingleChoice = "You took too much time to choose the correct exit, you have been catured again!"
