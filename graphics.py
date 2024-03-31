@@ -15,10 +15,11 @@ def printDeath():
 import time
 
 def printSlow(msg):
-    for char in msg:
+    print(f'{msg}')
+    '''for char in msg:
         print(char, end='')
         time.sleep(0.25)
-    return
+    return'''
 def printVictory():
     print('''
 ****************************************

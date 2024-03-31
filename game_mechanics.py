@@ -3,14 +3,15 @@ import Testing_Sound as ts
 import graphics
 import messages
 import game_mechanics_options
+import room_mechanics as rm
 
 def roomCount(difficulty):
     if difficulty == "l":
-        noOfRooms = random.randint(5,10)
+        noOfRooms = random.randint(3,6)
     elif difficulty == "m":
-        noOfRooms = random.randint(11, 15)
+        noOfRooms = random.randint(7, 9)
     else:
-        noOfRooms = random.randint(20, 25)
+        noOfRooms = random.randint(10, 11)
     return noOfRooms
 
 def printIntro():
@@ -29,9 +30,9 @@ def roomChoice(noOfRooms):
     printOptions(exits)
     ts.say(messages.makeChoiceMessage)
     if len(exits) > 1:
-        return multiExitRoom(exits, noOfRooms)
+        return rm.multiExitRoom(exits, noOfRooms, gameLoss)
     else:
-        return singeExitRoom(exits, noOfRooms)
+        return rm.singeExitRoom(exits, noOfRooms)
 
 def multiExitRoom(exits, noOfRooms):
     caught = random.choice(exits)
@@ -64,9 +65,9 @@ def gameLoss():
     graphics.printDeath()
     ts.say("Good bye Agent Bond!! GAME OVER")
 
-def availableExits():
+def availableExits(): # This works
     noOfExits = random.randint(1, len(game_mechanics_options.move))
-    exits = random.choice(game_mechanics_options.move, k = noOfExits)
+    exits = random.choices(game_mechanics_options.move,  k=noOfExits)
     return exits
 
 def printOptions(options):
