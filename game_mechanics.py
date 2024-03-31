@@ -63,7 +63,7 @@ def gameVictroy():
 def gameLoss():
     ts.say(random.choice(messages.caughtMessages))
     graphics.printDeath()
-    ts.say("Good bye Agent Bond!! GAME OVER")
+    ts.say("Good bye Agent Bond !! GAME OVER")
 
 def availableExits(): # This works
     noOfExits = random.randint(1, len(game_mechanics_options.move))
