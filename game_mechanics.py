@@ -4,6 +4,7 @@ import graphics
 import messages
 import game_mechanics_options
 import room_mechanics as rm
+import boss_mechanics as bm
 
 def roomCount(difficulty):
     if difficulty == "l":
@@ -26,13 +27,18 @@ def getDifficulty():
     return difficulty
 
 def roomChoice(noOfRooms):
-    exits = availableExits()
-    printOptions(exits)
-    ts.say(messages.makeChoiceMessage)
-    if len(exits) > 1:
-        return rm.multiExitRoom(exits, noOfRooms, gameLoss)
+    if random.randin(0,1) > 0:
+        value = bm.callBoss()
+    if value:
+        exits = availableExits()
+        printOptions(exits)
+        ts.say(messages.makeChoiceMessage)
+        if len(exits) > 1:
+            return rm.multiExitRoom(exits, noOfRooms, gameLoss)
+        else:
+            return rm.singeExitRoom(exits, noOfRooms)
     else:
-        return rm.singeExitRoom(exits, noOfRooms)
+        print(f'Sorry you lost to the boss')
 
 def multiExitRoom(exits, noOfRooms):
     caught = random.choice(exits)
