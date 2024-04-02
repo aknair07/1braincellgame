@@ -1,7 +1,3 @@
-# Function that calls the boss
-# Three levels of difficulty (will be random)
-# Rock paper Scissors mechanics
-
 import random
 import game_mechanics_options as gmo
 
